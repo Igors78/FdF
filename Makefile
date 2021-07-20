@@ -6,7 +6,7 @@
 #    By: ioleinik <ioleinik@student.42wolfsburg.de> +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/17 18:24:26 by ioleinik          #+#    #+#              #
-#    Updated: 2021/07/20 14:06:43 by ioleinik         ###   ########.fr        #
+#    Updated: 2021/07/20 16:48:55 by ioleinik         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,7 @@ LINKS		= -I$(INCL_PATH) \
 			-I$(MINI_INCL) \
 			-L $(MINI_PATH) -lmlx \
 			-L $(LIB_PATH) -lft \
-			-lX11 -lXext
+			-lX11 -lXext -lm
 
 all:		$(LIBRARY) $(NAME)
 
