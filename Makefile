@@ -6,12 +6,12 @@
 #    By: ioleinik <ioleinik@student.42wolfsburg.de> +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/17 18:24:26 by ioleinik          #+#    #+#              #
-#    Updated: 2021/07/19 13:30:23 by ioleinik         ###   ########.fr        #
+#    Updated: 2021/07/20 14:06:43 by ioleinik         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC			= gcc
-CFLAGS		= -Wall -Wextra #-Werror -g
+CFLAGS		= -Wall -Wextra -Werror -g
 
 RM			= rm -f
 

@@ -6,7 +6,7 @@
 /*   By: ioleinik <ioleinik@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/14 14:53:13 by ioleinik          #+#    #+#             */
-/*   Updated: 2021/07/19 13:21:24 by ioleinik         ###   ########.fr       */
+/*   Updated: 2021/07/19 14:27:14 by ioleinik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdarg.h>
+# include <fcntl.h>
 
 /*
 ** MANDATORY PART
