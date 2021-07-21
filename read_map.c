@@ -6,7 +6,7 @@
 /*   By: ioleinik <ioleinik@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/21 12:39:37 by ioleinik          #+#    #+#             */
-/*   Updated: 2021/07/21 14:57:11 by ioleinik         ###   ########.fr       */
+/*   Updated: 2021/07/21 15:00:43 by ioleinik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ static void	fill_altitude(int *alt_line, char *line)
 		free (splits[i]);
 		i++;
 	}
+	free(splits);
 }
 
 void	read_map(char *map, t_fdf d)
@@ -85,4 +86,5 @@ void	read_map(char *map, t_fdf d)
 		i++;
 	}
 	d->a[i] = NULL;
+	close(fd);
 }
