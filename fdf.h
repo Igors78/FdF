@@ -6,7 +6,7 @@
 /*   By: ioleinik <ioleinik@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/18 12:29:59 by ioleinik          #+#    #+#             */
-/*   Updated: 2021/07/20 16:48:46 by ioleinik         ###   ########.fr       */
+/*   Updated: 2021/07/21 13:08:44 by ioleinik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,16 @@
 
 typedef struct s_fdf
 {
+	int		w;
+	int		h;
+	int		**a;
+	float	x;
+	float	y;
+	float	z;
 	void	*mlx;
 	void	*win;
 }				*t_fdf;
+
+void	read_map(char *map, t_fdf d);
 
 #endif

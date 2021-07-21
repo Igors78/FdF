@@ -6,7 +6,7 @@
 #    By: ioleinik <ioleinik@student.42wolfsburg.de> +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/17 18:24:26 by ioleinik          #+#    #+#              #
-#    Updated: 2021/07/20 16:48:55 by ioleinik         ###   ########.fr        #
+#    Updated: 2021/07/21 12:39:34 by ioleinik         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ CFLAGS		= -Wall -Wextra -Werror -g
 
 RM			= rm -f
 
-NAME		= main
+NAME		= fdf
 
 LIB_PATH	= ./libft
 INCL_PATH	= ./libft
@@ -27,7 +27,7 @@ MINI_INCL	= ./minilibx-linux
 
 MAKE		= make
 
-SRC			= main.c
+SRC			= fdf.c read_map.c
 
 OBJ			= ${SRC:.c=.o}
 
