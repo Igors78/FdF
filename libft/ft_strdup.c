@@ -6,7 +6,7 @@
 /*   By: ioleinik <ioleinik@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/16 07:50:09 by ioleinik          #+#    #+#             */
-/*   Updated: 2021/05/16 08:16:09 by ioleinik         ###   ########.fr       */
+/*   Updated: 2021/07/23 15:28:40 by ioleinik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,12 @@ char	*ft_strdup(const char *src)
 	char	*dup;
 	size_t	l;
 
+	if (!src)
+		return (NULL);
 	l = 0;
 	while (src[l] != '\0')
 		l++;
-	dup = (char *)malloc(sizeof(char *) * (l + 1));
+	dup = (char *)malloc(sizeof(char) * (l + 1));
 	if (NULL == dup)
 		return (dup);
 	i = 0;

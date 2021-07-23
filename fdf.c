@@ -6,7 +6,7 @@
 /*   By: ioleinik <ioleinik@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/18 11:26:35 by ioleinik          #+#    #+#             */
-/*   Updated: 2021/07/21 15:07:27 by ioleinik         ###   ########.fr       */
+/*   Updated: 2021/07/23 14:51:00 by ioleinik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,14 @@ int	main(int argc, char **argv)
 		ft_printf("\n");
 		i++;
 	}
+	i = 0;
+	while (i < d->h)
+	{
+		free(d->a[i]);
+		i++;
+	}
+	free(d->a);
+	free(d);
 
 	// d->mlx = mlx_init();
 	// d->win = mlx_new_window(d->mlx, 640, 360, "TEST");

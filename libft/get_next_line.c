@@ -6,7 +6,7 @@
 /*   By: ioleinik <ioleinik@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/06 20:24:31 by ioleinik          #+#    #+#             */
-/*   Updated: 2021/07/17 19:18:07 by ioleinik         ###   ########.fr       */
+/*   Updated: 2021/07/23 15:34:38 by ioleinik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ int	remain(int fd, int i, char **line, char **r)
 		tmp = r[fd];
 		*line = ft_substr(r[fd], 0, (p_n - r[fd]));
 		r[fd] = ft_strdup(r[fd] + (p_n - r[fd] + 1));
+		if (r[fd][0] == '\0')
+			ft_memdel((void **)&r[fd]);
 		ft_memdel((void **)&tmp);
 		return (1);
 	}

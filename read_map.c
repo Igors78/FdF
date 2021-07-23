@@ -6,7 +6,7 @@
 /*   By: ioleinik <ioleinik@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/21 12:39:37 by ioleinik          #+#    #+#             */
-/*   Updated: 2021/07/21 15:00:43 by ioleinik         ###   ########.fr       */
+/*   Updated: 2021/07/23 14:45:49 by ioleinik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 // ' h ' for height of the map(initial y)
 // ' a ' for respective altitude of point of cross(x, y)
 
-static int	get_w(char *map)
+static int	get_width(char *map)
 {
 	char	*line;
 	int		fd;
@@ -31,7 +31,7 @@ static int	get_w(char *map)
 	return (w);
 }
 
-static int	get_h(char *map)
+static int	get_height(char *map)
 {
 	char	*line;
 	int		fd;
@@ -71,12 +71,12 @@ void	read_map(char *map, t_fdf d)
 	int		fd;
 	int		i;
 
-	d->w = get_w(map);
-	d->h = get_h(map);
-	d->a = (int **)malloc(sizeof(int) * (d->w + 1));
+	d->w = get_width(map);
+	d->h = get_height(map);
+	d->a = (int **)malloc(sizeof(int *) * (d->h + 1));
 	i = 0;
-	while (i <= d->h)
-		d->a[i++] = (int *)malloc(sizeof(int) * (d->w + 1));
+	while (i < d->h)
+		d->a[i++] = (int *)malloc(sizeof(int) * (d->w));
 	fd = open(map, O_RDONLY);
 	i = 0;
 	while (get_next_line(fd, &line))
@@ -85,6 +85,7 @@ void	read_map(char *map, t_fdf d)
 		free(line);
 		i++;
 	}
+	free(line);
 	d->a[i] = NULL;
 	close(fd);
 }
