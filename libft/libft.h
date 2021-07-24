@@ -6,7 +6,7 @@
 /*   By: ioleinik <ioleinik@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/14 14:53:13 by ioleinik          #+#    #+#             */
-/*   Updated: 2021/07/23 15:23:48 by ioleinik         ###   ########.fr       */
+/*   Updated: 2021/07/24 17:49:38 by ioleinik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,7 +139,7 @@ t_data	reset_table(t_data table);
 ** GET NEXT LINE
 */
 
-# define BUFFER_SIZE 1
+# define BUFFER_SIZE 42
 
 int		get_next_line(int fd, char **line);
 

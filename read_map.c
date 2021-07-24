@@ -6,54 +6,54 @@
 /*   By: ioleinik <ioleinik@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/21 12:39:37 by ioleinik          #+#    #+#             */
-/*   Updated: 2021/07/24 08:29:18 by ioleinik         ###   ########.fr       */
+/*   Updated: 2021/07/24 08:40:46 by ioleinik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-// ' w ' for width of the map(initial x)
-// ' h ' for height of the map(initial y)
-// ' a ' for respective altitude of point of cross(x, y)
-
 static int	get_width(char *map)
 {
 	char	*line;
 	int		fd;
-	size_t	w;
+	size_t	width;
 
 	fd = open(map, O_RDONLY);
-	w = 0;
+	if (fd < 0)
+		ft_terror("Cannot open file\n");
+	width = 0;
 	get_next_line(fd, &line);
-	w = ft_wordcount(line, ' ');
+	width = ft_wordcount(line, ' ');
 	free(line);
 	while (get_next_line(fd, &line))
 	{
-		if (w != ft_wordcount(line, ' '))
+		if (width != ft_wordcount(line, ' '))
 			ft_terror("Invalid map format\n");
 		free(line);
 	}
 	free(line);
 	close(fd);
-	return (w);
+	return (width);
 }
 
 static int	get_height(char *map)
 {
 	char	*line;
 	int		fd;
-	size_t	h;
+	size_t	height;
 
 	fd = open(map, O_RDONLY);
-	h = 0;
+	if (fd < 0)
+		ft_terror("Cannot open file\n");
+	height = 0;
 	while (get_next_line(fd, &line))
 	{
-		h++;
+		height++;
 		free(line);
 	}
 	free(line);
 	close(fd);
-	return (h);
+	return (height);
 }
 
 static void	fill_altitude(int *alt_line, char *line)
@@ -72,6 +72,10 @@ static void	fill_altitude(int *alt_line, char *line)
 	free(splits);
 }
 
+// ' w ' for width of the map(initial maximum x)
+// ' h ' for height of the map(initial maximum y)
+// ' a ' for respective altitude of point of cross(x, y)
+
 void	read_map(char *map, t_fdf d)
 {
 	char	*line;
@@ -85,6 +89,8 @@ void	read_map(char *map, t_fdf d)
 	while (i < d->h)
 		d->a[i++] = (int *)malloc(sizeof(int) * (d->w));
 	fd = open(map, O_RDONLY);
+	if (fd < 0)
+		ft_terror("Cannot open file\n");
 	i = 0;
 	while (get_next_line(fd, &line))
 	{
