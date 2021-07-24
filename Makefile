@@ -6,7 +6,7 @@
 #    By: ioleinik <ioleinik@student.42wolfsburg.de> +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/17 18:24:26 by ioleinik          #+#    #+#              #
-#    Updated: 2021/07/21 15:26:56 by ioleinik         ###   ########.fr        #
+#    Updated: 2021/07/23 15:43:29 by ioleinik         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,4 +57,8 @@ fclean:		clean
 
 re:			fclean all
 
-.PHONY: all clean fclean re
+norm:
+			norminette libft/
+			norminette $(SRC) fdf.h
+
+.PHONY: all clean fclean re norm

@@ -6,7 +6,7 @@
 /*   By: ioleinik <ioleinik@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/21 12:39:37 by ioleinik          #+#    #+#             */
-/*   Updated: 2021/07/23 14:45:49 by ioleinik         ###   ########.fr       */
+/*   Updated: 2021/07/24 08:29:18 by ioleinik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,19 @@ static int	get_width(char *map)
 {
 	char	*line;
 	int		fd;
-	int		w;
+	size_t	w;
 
 	fd = open(map, O_RDONLY);
 	w = 0;
 	get_next_line(fd, &line);
 	w = ft_wordcount(line, ' ');
+	free(line);
+	while (get_next_line(fd, &line))
+	{
+		if (w != ft_wordcount(line, ' '))
+			ft_terror("Invalid map format\n");
+		free(line);
+	}
 	free(line);
 	close(fd);
 	return (w);
@@ -35,7 +42,7 @@ static int	get_height(char *map)
 {
 	char	*line;
 	int		fd;
-	int		h;
+	size_t	h;
 
 	fd = open(map, O_RDONLY);
 	h = 0;
