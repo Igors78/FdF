@@ -6,7 +6,7 @@
 /*   By: ioleinik <ioleinik@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/18 11:26:35 by ioleinik          #+#    #+#             */
-/*   Updated: 2021/07/24 20:35:35 by ioleinik         ###   ########.fr       */
+/*   Updated: 2021/07/25 06:42:40 by ioleinik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,22 @@
 
 // < d > stands for data table stored in s_fdf structure
 
-void	my_mlx_pixel_put(t_fdf d, int x, int y, int color)
+static void	init_data(t_fdf d)
+{
+	d->w = 0;
+	d->h = 0;
+	d->a = NULL;
+	d->x = 0;
+	d->x1 = 0;
+	d->x2 = 0;
+	d->y = 0;
+	d->y1 = 0;
+	d->y2 = 0;
+	d->z = 0;
+	d->color = 0xFF0000;
+}
+
+void	put_pix(t_fdf d, int x, int y, int color)
 {
 	char	*dst;
 
@@ -45,6 +60,7 @@ int	main(int argc, char **argv)
 	d = (t_fdf)malloc(sizeof(struct s_fdf));
 	if (!d)
 		ft_terror("Memory allocation failed\n");
+	init_data(d);
 	// read_map(argv[1], d);
 	free(d->a);
 	free(d);
@@ -53,7 +69,11 @@ int	main(int argc, char **argv)
 	d->img = mlx_new_image(d->mlx, 1420, 980);
 	d->addr = mlx_get_data_addr(d->img, &(d->bits_per_pixel), &(d->line_length),
 			&(d->endian));
-	my_mlx_pixel_put(d, 1420 >> 1, 980 >> 1, 0x00FF0000);
+	d->x1 = 10;
+	d->x2 = 110;
+	d->y1 = 10;
+	d->y2 = 110;
+	draw_line(d);
 	mlx_put_image_to_window(d->mlx, d->win, d->img, 0, 0);
 	// mlx_mouse_hook(d->win, &mouse_event, d);
 	mlx_loop(d->mlx);
