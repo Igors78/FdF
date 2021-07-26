@@ -6,7 +6,7 @@
 /*   By: ioleinik <ioleinik@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/21 15:26:59 by ioleinik          #+#    #+#             */
-/*   Updated: 2021/07/26 10:29:52 by ioleinik         ###   ########.fr       */
+/*   Updated: 2021/07/26 19:24:54 by ioleinik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,19 @@
 	// 	d->color = 0xFFFFFF;
 // }
 
+static int	maxmodule(t_fdf d)
+{
+	float	x_step;
+	float	y_step;
+
+	x_step = fabs(d->x2 - d->x1);
+	y_step = fabs(d->y2 - d->y1);
+	if (x_step > y_step)
+		return (x_step);
+	else
+		return (y_step);
+}
+
 void	put_pix(t_fdf d, int x, int y, int color)
 {
 	char	*dst;
@@ -36,47 +49,24 @@ void	put_pix(t_fdf d, int x, int y, int color)
 
 void	draw_line(t_fdf d)
 {
-	int	dx;
-	int	dy;
-	int	x;
-	int	y;
-	int	p;
+	float	x_step;
+	float	y_step;
+	int		max;
 
-	//color_zoom(d);
-	dx = d->x2 - d->x1;
-	dy = d->y2 - d->y1;
-	x = d->x1;
-	y = d->y1;
-	p = 2 * dy - dx;
-	while (x < d->x2)
+	x_step = d->x2 - d->x1;
+	y_step = d->y2 - d->y1;
+	max = maxmodule(d);
+	x_step /= max;
+	y_step /= max;
+	while ((int)(d->x1 - d->x2) || (int)(d->y1 - d->y2))
 	{
-		if (p >= 0)
-		{
-			put_pix(d, x, y, d->color);
-			y = y + 1;
-			p = p + 2 * dy - 2 * dx;
-		}
-		else
-		{
-			put_pix(d, x, y, d->color);
-			p = p + 2 * dy;
-		}
-		x++;
+		put_pix(d, d->x1, d->y1, d->color);
+		d->x1 += x_step;
+		d->y1 += y_step;
 	}
 }
 
 void	plot(t_fdf d)
 {
-	// d->x1 = 10;
-	// d->y1 = 10;
-	// d->x2 = 100;
-	// d->y2 = 10;
-	// draw_line(d);
-	d->x1 = 10;
-	d->y1 = 10;
-	d->x2 = 50;
-	d->y2 = 500;
-	put_pix(d, d->x1, d->y1, d->color);
-	put_pix(d, d->x2, d->y2, d->color);
-	draw_line(d);
+	
 }

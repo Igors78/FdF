@@ -6,7 +6,7 @@
 /*   By: ioleinik <ioleinik@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/18 12:29:59 by ioleinik          #+#    #+#             */
-/*   Updated: 2021/07/25 16:21:16 by ioleinik         ###   ########.fr       */
+/*   Updated: 2021/07/26 18:37:50 by ioleinik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,19 @@ typedef struct s_fdf
 	int		h;
 	int		**a;
 	int		x;
-	int		x1;
-	int		x2;
+	float	x1;
+	float	x2;
 	int		y;
-	int		y1;
-	int		y2;
+	float	y1;
+	float	y2;
 	int		z1;
 	int		z2;
+	int		dx;
+	int		dy;
+	int		sx;
+	int		sy;
+	int		err;
+	int		err2;
 	int		color;
 	int		zoom;
 	void	*mlx;

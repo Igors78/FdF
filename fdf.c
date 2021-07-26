@@ -6,7 +6,7 @@
 /*   By: ioleinik <ioleinik@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/18 11:26:35 by ioleinik          #+#    #+#             */
-/*   Updated: 2021/07/25 21:16:26 by ioleinik         ###   ########.fr       */
+/*   Updated: 2021/07/26 19:02:07 by ioleinik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static void	init_data(t_fdf d)
 	d->z1 = 0;
 	d->z2 = 0;
 	d->zoom = 20;
-	d->color = 0xFFFFFF;
+	d->color = 0xFF0000;
 }
 
 int	mouse_event(int button, int x, int y, void *param)
@@ -57,8 +57,8 @@ int	main(int argc, char **argv)
 	init_data(d);
 	read_map(argv[1], d);
 	d->mlx = mlx_init();
-	d->win = mlx_new_window(d->mlx, 1420, 980, "Hello world!");
-	d->img = mlx_new_image(d->mlx, 1420, 980);
+	d->win = mlx_new_window(d->mlx, 800, 570, "Hello world!");
+	d->img = mlx_new_image(d->mlx, 800, 570);
 	d->addr = mlx_get_data_addr(d->img, &(d->bits_per_pixel), &(d->line_length),
 			&(d->endian));
 	plot(d);
