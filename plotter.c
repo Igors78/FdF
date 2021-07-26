@@ -6,7 +6,7 @@
 /*   By: ioleinik <ioleinik@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/21 15:26:59 by ioleinik          #+#    #+#             */
-/*   Updated: 2021/07/26 19:24:54 by ioleinik         ###   ########.fr       */
+/*   Updated: 2021/07/26 20:49:12 by ioleinik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,11 @@ void	draw_line(t_fdf d)
 	float	y_step;
 	int		max;
 
+	d->z = d->a[d->y][d->x];
+	if (d->z)
+		d->color = 0xFF0000;
+	else
+		d->color = 0xFFFFFF;
 	x_step = d->x2 - d->x1;
 	y_step = d->y2 - d->y1;
 	max = maxmodule(d);
@@ -68,5 +73,29 @@ void	draw_line(t_fdf d)
 
 void	plot(t_fdf d)
 {
-	
+	while (d->y < d->h)
+	{
+		d->x = 0;
+		while (d->x < d->w)
+		{
+			if (d->x < d->w - 1)
+			{
+				d->x1 = d->x * d->zoom;
+				d->x2 = (d->x + 1) * d->zoom;
+				d->y1 = d->y * d->zoom;
+				d->y2 = d->y * d->zoom;
+				draw_line(d);
+			}
+			if (d->y < d->h - 1)
+			{
+				d->x1 = d->x * d->zoom;
+				d->x2 = d->x * d->zoom;
+				d->y1 = d->y * d->zoom;
+				d->y2 = (d->y + 1) * d->zoom;
+				draw_line(d);
+			}
+			(d->x)++;
+		}
+		(d->y)++;
+	}
 }

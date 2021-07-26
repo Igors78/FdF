@@ -6,7 +6,7 @@
 /*   By: ioleinik <ioleinik@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/18 11:26:35 by ioleinik          #+#    #+#             */
-/*   Updated: 2021/07/26 19:02:07 by ioleinik         ###   ########.fr       */
+/*   Updated: 2021/07/26 20:49:29 by ioleinik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,10 @@ static void	init_data(t_fdf d)
 	d->y = 0;
 	d->y1 = 0;
 	d->y2 = 0;
-	d->z1 = 0;
+	d->z = 0;
 	d->z2 = 0;
 	d->zoom = 20;
-	d->color = 0xFF0000;
+	d->color = 0xFFFFFF;
 }
 
 int	mouse_event(int button, int x, int y, void *param)

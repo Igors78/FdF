@@ -6,7 +6,7 @@
 /*   By: ioleinik <ioleinik@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/18 12:29:59 by ioleinik          #+#    #+#             */
-/*   Updated: 2021/07/26 18:37:50 by ioleinik         ###   ########.fr       */
+/*   Updated: 2021/07/26 20:46:21 by ioleinik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ typedef struct s_fdf
 	int		y;
 	float	y1;
 	float	y2;
-	int		z1;
+	int		z;
 	int		z2;
 	int		dx;
 	int		dy;
