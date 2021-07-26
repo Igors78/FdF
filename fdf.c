@@ -6,7 +6,7 @@
 /*   By: ioleinik <ioleinik@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/18 11:26:35 by ioleinik          #+#    #+#             */
-/*   Updated: 2021/07/25 16:23:37 by ioleinik         ###   ########.fr       */
+/*   Updated: 2021/07/25 21:16:26 by ioleinik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,11 @@ int	main(int argc, char **argv)
 	d->addr = mlx_get_data_addr(d->img, &(d->bits_per_pixel), &(d->line_length),
 			&(d->endian));
 	plot(d);
+	// d->x1 = 0;
+	// d->y1 = 0;
+	// d->x2 = 100;
+	// d->y2 = 500;
+	// draw_line(d);
 	mlx_put_image_to_window(d->mlx, d->win, d->img, 0, 0);
 	// mlx_mouse_hook(d->win, &mouse_event, d);
 	mlx_loop(d->mlx);
