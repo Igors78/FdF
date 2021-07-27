@@ -6,7 +6,7 @@
 /*   By: ioleinik <ioleinik@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/18 12:29:59 by ioleinik          #+#    #+#             */
-/*   Updated: 2021/07/27 16:30:30 by ioleinik         ###   ########.fr       */
+/*   Updated: 2021/07/27 20:36:53 by ioleinik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@
 # include "minilibx-linux/mlx.h"
 # include "minilibx-linux/mlx_int.h"
 # include <math.h>
-# include <stdio.h>
 
 typedef struct s_fdf
 {
