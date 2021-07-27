@@ -6,7 +6,7 @@
 #    By: ioleinik <ioleinik@student.42wolfsburg.de> +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/17 18:24:26 by ioleinik          #+#    #+#              #
-#    Updated: 2021/07/27 10:54:07 by ioleinik         ###   ########.fr        #
+#    Updated: 2021/07/27 13:39:54 by ioleinik         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ MINI_INCL	= ./minilibx-linux
 
 MAKE		= make
 
-SRC			= fdf.c read_map.c plotter.c init_colors.c
+SRC			= fdf.c read_map.c plotter.c init_colors.c isometr.c
 
 OBJ			= ${SRC:.c=.o}
 

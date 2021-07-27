@@ -6,25 +6,21 @@
 /*   By: ioleinik <ioleinik@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/21 15:26:59 by ioleinik          #+#    #+#             */
-/*   Updated: 2021/07/27 10:40:14 by ioleinik         ###   ########.fr       */
+/*   Updated: 2021/07/27 17:51:02 by ioleinik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-// static void	color_zoom(t_fdf d)
-// {
-	// d->z1 = d->a[d->y1][d->x1];
-	// d->z2 = d->a[d->y2][d->x2];
-// 	d->x1 *= d->zoom;
-// 	d->y1 *= d->zoom;
-// 	d->x2 *= d->zoom;
-// 	d->y2 *= d->zoom;
-	// if (d->z1 > 0)
-	// 	d->color = 0xFF0000;
-	// else
-	// 	d->color = 0xFFFFFF;
-// }
+static void	set_color(t_fdf d)
+{
+	if (d->c[d->y][d->x])
+		d->color = d->c[d->y][d->x];
+	else if (d->z || d->z1)
+		d->color = 0xFF0000;
+	else
+		d->color = 0xFFFFFF;
+}
 
 static int	maxmodule(t_fdf d)
 {
@@ -54,14 +50,15 @@ void	draw_line(t_fdf d)
 	int		max;
 
 	d->z = d->a[d->y][d->x];
-	if (d->c[d->y][d->x])
-		d->color = d->c[d->y][d->x];
-	else if (d->z)
-		d->color = 0xFF0000;
-	else
-		d->color = 0xFFFFFF;
+	d->z1 = d->a[(int)d->y2 / d->zoom][(int)d->x2 / d->zoom];
+	set_color(d);
+	isometr(d);
 	x_step = d->x2 - d->x1;
 	y_step = d->y2 - d->y1;
+	d->x1 += 300;
+	d->y1 += 100;
+	d->x2 += 300;
+	d->y2 += 100;
 	max = maxmodule(d);
 	x_step /= max;
 	y_step /= max;
@@ -71,6 +68,7 @@ void	draw_line(t_fdf d)
 		d->x1 += x_step;
 		d->y1 += y_step;
 	}
+	reset_coord(d);
 }
 
 void	plot(t_fdf d)

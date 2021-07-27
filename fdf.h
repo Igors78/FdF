@@ -6,7 +6,7 @@
 /*   By: ioleinik <ioleinik@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/18 12:29:59 by ioleinik          #+#    #+#             */
-/*   Updated: 2021/07/27 11:07:41 by ioleinik         ###   ########.fr       */
+/*   Updated: 2021/07/27 16:30:30 by ioleinik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include "minilibx-linux/mlx.h"
 # include "minilibx-linux/mlx_int.h"
 # include <math.h>
+# include <stdio.h>
 
 typedef struct s_fdf
 {
@@ -34,12 +35,7 @@ typedef struct s_fdf
 	float	y1;
 	float	y2;
 	int		z;
-	int		dx;
-	int		dy;
-	int		sx;
-	int		sy;
-	int		err;
-	int		err2;
+	int		z1;
 	int		color;
 	int		zoom;
 	void	*mlx;
@@ -56,5 +52,7 @@ void	draw_line(t_fdf d);
 void	put_pix(t_fdf d, int x, int y, int color);
 void	plot(t_fdf d);
 void	init_colors(t_fdf d);
+void	isometr(t_fdf d);
+void	reset_coord(t_fdf d);
 
 #endif
