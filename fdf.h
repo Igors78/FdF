@@ -6,7 +6,7 @@
 /*   By: ioleinik <ioleinik@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/18 12:29:59 by ioleinik          #+#    #+#             */
-/*   Updated: 2021/07/26 20:51:54 by ioleinik         ###   ########.fr       */
+/*   Updated: 2021/07/27 08:21:14 by ioleinik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ typedef struct s_fdf
 	int		w;
 	int		h;
 	int		**a;
+	int		**c;
 	int		x;
 	float	x1;
 	float	x2;
@@ -55,5 +56,6 @@ void	read_map(char *map, t_fdf d);
 void	draw_line(t_fdf d);
 void	put_pix(t_fdf d, int x, int y, int color);
 void	plot(t_fdf d);
+void	init_colors(t_fdf d);
 
 #endif

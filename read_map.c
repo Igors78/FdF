@@ -6,7 +6,7 @@
 /*   By: ioleinik <ioleinik@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/21 12:39:37 by ioleinik          #+#    #+#             */
-/*   Updated: 2021/07/27 07:19:25 by ioleinik         ###   ########.fr       */
+/*   Updated: 2021/07/27 08:19:38 by ioleinik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ static void	parse_map(char *map, t_fdf d)
 		i++;
 	}
 	free(line);
-	d->a[i] = NULL;
 	close(fd);
 }
 
@@ -103,6 +102,7 @@ void	read_map(char *map, t_fdf d)
 
 	d->w = get_width(map);
 	d->h = get_height(map);
+	init_colors(d);
 	d->a = (int **)malloc(sizeof(int *) * (d->h + 1));
 	if (NULL == d->a)
 		ft_terror("Memory allocation failed\n");
@@ -116,4 +116,5 @@ void	read_map(char *map, t_fdf d)
 		i++;
 	}
 	parse_map(map, d);
+	d->a[i] = NULL;
 }

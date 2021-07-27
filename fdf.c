@@ -6,7 +6,7 @@
 /*   By: ioleinik <ioleinik@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/18 11:26:35 by ioleinik          #+#    #+#             */
-/*   Updated: 2021/07/26 20:52:32 by ioleinik         ###   ########.fr       */
+/*   Updated: 2021/07/27 08:12:50 by ioleinik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ static void	init_data(t_fdf d)
 	d->w = 0;
 	d->h = 0;
 	d->a = NULL;
+	d->c = NULL;
 	d->x = 0;
 	d->x1 = 0;
 	d->x2 = 0;
