@@ -6,13 +6,34 @@
 /*   By: ioleinik <ioleinik@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/18 11:26:35 by ioleinik          #+#    #+#             */
-/*   Updated: 2021/07/27 17:38:22 by ioleinik         ###   ########.fr       */
+/*   Updated: 2021/07/27 19:30:49 by ioleinik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
 // < d > stands for data table stored in s_fdf structure
+
+static void	clean_up(t_fdf d)
+{
+	int	i;
+
+	i = 0;
+	while (i < d->h)
+	{
+		free(d->a[i]);
+		free(d->c[i]);
+		i++;
+	}
+	free(d->a);
+	free(d->c);
+	mlx_destroy_image(d->mlx, d->img);
+	mlx_destroy_window(d->mlx, d->win);
+	mlx_destroy_display(d->mlx);
+	free(d->mlx);
+	free(d);
+	exit(0);
+}
 
 static void	init_data(t_fdf d)
 {
@@ -31,15 +52,13 @@ static void	init_data(t_fdf d)
 	d->color = 0xFFFFFF;
 }
 
-int	mouse_event(int button, int x, int y, void *param)
+static int	key_event(int button, void *param)
 {
 	t_fdf	d;
 
-	(void)x;
-	(void)y;
 	d = param;
-	mlx_pixel_put(d->mlx, d->win, 640 / 2, 360 / 2, 0xFF0000);
-	ft_putnbr_fd(button, 1);
+	if (button == 65307)
+		clean_up(d);
 	return (0);
 }
 
@@ -61,9 +80,7 @@ int	main(int argc, char **argv)
 			&(d->endian));
 	plot(d);
 	mlx_put_image_to_window(d->mlx, d->win, d->img, 0, 0);
-	// mlx_mouse_hook(d->win, &mouse_event, d);
+	mlx_key_hook(d->win, &key_event, d);
 	mlx_loop(d->mlx);
-	free(d->a);
-	free(d);
 	return (0);
 }
