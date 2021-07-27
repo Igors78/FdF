@@ -6,7 +6,7 @@
 /*   By: ioleinik <ioleinik@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/21 12:39:37 by ioleinik          #+#    #+#             */
-/*   Updated: 2021/07/27 10:36:38 by ioleinik         ###   ########.fr       */
+/*   Updated: 2021/07/27 10:44:33 by ioleinik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,8 +103,6 @@ static int	get_height(char *map)
 void	read_map(char *map, t_fdf d)
 {
 	int		i;
-	int		x;
-	int		y;
 
 	d->w = get_width(map);
 	d->h = get_height(map);
@@ -123,15 +121,4 @@ void	read_map(char *map, t_fdf d)
 	}
 	parse_map(map, d);
 	d->a[i] = NULL;
-	y = 0;
-	while (y < d->h)
-	{
-		x = 0;
-		while (x < d->w)
-		{
-			ft_printf("%X", d->c[y][x]);
-			x++;
-		}
-		y++;
-	}
 }
