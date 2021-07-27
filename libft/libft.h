@@ -6,7 +6,7 @@
 /*   By: ioleinik <ioleinik@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/14 14:53:13 by ioleinik          #+#    #+#             */
-/*   Updated: 2021/07/24 17:49:38 by ioleinik         ###   ########.fr       */
+/*   Updated: 2021/07/27 10:15:23 by ioleinik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char *));
 size_t	ft_wordcount(char const *s, char c);
 void	ft_terror(char *str);
 char	*ft_straddchar(char *str, char c);
+int		ft_atoi_base(char *str, char *base);
 
 /*
 ** BONUS PART

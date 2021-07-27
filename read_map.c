@@ -6,13 +6,13 @@
 /*   By: ioleinik <ioleinik@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/21 12:39:37 by ioleinik          #+#    #+#             */
-/*   Updated: 2021/07/27 08:19:38 by ioleinik         ###   ########.fr       */
+/*   Updated: 2021/07/27 10:36:38 by ioleinik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-static void	fill_altitude(int *alt_line, char *line)
+static void	fill_altitude(int *alt_line, char *line, int y, t_fdf d)
 {
 	char	**splits;
 	int		i;
@@ -22,6 +22,10 @@ static void	fill_altitude(int *alt_line, char *line)
 	while (splits[i])
 	{
 		alt_line[i] = ft_atoi(splits[i]);
+		if (strchr(splits[i], ','))
+		{
+			d->c[y][i] = ft_atoi_base(strchr(splits[i], ',') + 3, HEXUPP);
+		}
 		free (splits[i]);
 		i++;
 	}
@@ -40,7 +44,7 @@ static void	parse_map(char *map, t_fdf d)
 	i = 0;
 	while (get_next_line(fd, &line))
 	{
-		fill_altitude(d->a[i], line);
+		fill_altitude(d->a[i], line, i, d);
 		free(line);
 		i++;
 	}
@@ -99,6 +103,8 @@ static int	get_height(char *map)
 void	read_map(char *map, t_fdf d)
 {
 	int		i;
+	int		x;
+	int		y;
 
 	d->w = get_width(map);
 	d->h = get_height(map);
@@ -117,4 +123,15 @@ void	read_map(char *map, t_fdf d)
 	}
 	parse_map(map, d);
 	d->a[i] = NULL;
+	y = 0;
+	while (y < d->h)
+	{
+		x = 0;
+		while (x < d->w)
+		{
+			ft_printf("%X", d->c[y][x]);
+			x++;
+		}
+		y++;
+	}
 }

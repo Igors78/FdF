@@ -6,7 +6,7 @@
 /*   By: ioleinik <ioleinik@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/21 15:26:59 by ioleinik          #+#    #+#             */
-/*   Updated: 2021/07/26 20:49:12 by ioleinik         ###   ########.fr       */
+/*   Updated: 2021/07/27 10:40:14 by ioleinik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,9 @@ void	draw_line(t_fdf d)
 	int		max;
 
 	d->z = d->a[d->y][d->x];
-	if (d->z)
+	if (d->c[d->y][d->x])
+		d->color = d->c[d->y][d->x];
+	else if (d->z)
 		d->color = 0xFF0000;
 	else
 		d->color = 0xFFFFFF;
