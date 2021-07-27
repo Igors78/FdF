@@ -6,7 +6,7 @@
 /*   By: ioleinik <ioleinik@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/18 11:26:35 by ioleinik          #+#    #+#             */
-/*   Updated: 2021/07/27 08:12:50 by ioleinik         ###   ########.fr       */
+/*   Updated: 2021/07/27 11:09:48 by ioleinik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static void	init_data(t_fdf d)
 	d->y1 = 0;
 	d->y2 = 0;
 	d->z = 0;
-	d->zoom = 20;
+	d->zoom = 0;
 	d->color = 0xFFFFFF;
 }
 
@@ -47,8 +47,6 @@ int	main(int argc, char **argv)
 {
 	t_fdf	d;
 
-	(void)argc;
-	(void)argv;
 	if (argc != 2)
 		ft_terror("Correct format: ./fdf map.fdf\n");
 	d = (t_fdf)malloc(sizeof(struct s_fdf));
@@ -57,16 +55,11 @@ int	main(int argc, char **argv)
 	init_data(d);
 	read_map(argv[1], d);
 	d->mlx = mlx_init();
-	d->win = mlx_new_window(d->mlx, 800, 570, "Hello world!");
-	d->img = mlx_new_image(d->mlx, 800, 570);
+	d->win = mlx_new_window(d->mlx, MAX_X, MAX_Y, "FdF");
+	d->img = mlx_new_image(d->mlx, MAX_X, MAX_Y);
 	d->addr = mlx_get_data_addr(d->img, &(d->bits_per_pixel), &(d->line_length),
 			&(d->endian));
 	plot(d);
-	// d->x1 = 0;
-	// d->y1 = 0;
-	// d->x2 = 100;
-	// d->y2 = 500;
-	// draw_line(d);
 	mlx_put_image_to_window(d->mlx, d->win, d->img, 0, 0);
 	// mlx_mouse_hook(d->win, &mouse_event, d);
 	mlx_loop(d->mlx);

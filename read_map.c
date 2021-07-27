@@ -6,7 +6,7 @@
 /*   By: ioleinik <ioleinik@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/21 12:39:37 by ioleinik          #+#    #+#             */
-/*   Updated: 2021/07/27 10:44:33 by ioleinik         ###   ########.fr       */
+/*   Updated: 2021/07/27 11:14:04 by ioleinik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,4 +121,8 @@ void	read_map(char *map, t_fdf d)
 	}
 	parse_map(map, d);
 	d->a[i] = NULL;
+	if (MAX_X / d->w < MAX_Y / d->h)
+		d->zoom = MAX_X / d->w;
+	else
+		d->zoom = MAX_Y / d->h;
 }
