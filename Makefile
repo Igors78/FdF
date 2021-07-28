@@ -6,7 +6,7 @@
 #    By: ioleinik <ioleinik@student.42wolfsburg.de> +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/17 18:24:26 by ioleinik          #+#    #+#              #
-#    Updated: 2021/07/27 13:39:54 by ioleinik         ###   ########.fr        #
+#    Updated: 2021/07/28 22:25:28 by ioleinik         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,7 +56,7 @@ fclean:		clean
 			$(MAKE) -C $(MINI_PATH) clean
 
 re:			fclean all
-
+#Command runs norminette only for my files, not on mlx library
 norm:
 			norminette fdf.h
 			norminette libft/
